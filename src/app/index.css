@@ -1,0 +1,19 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+    margin: 0px;   
+}
+
+body{
+    background-color: #f3f4f6;
+}
+
+#root{
+    padding: 0px
+}
+
+.animate__animated.animate__slideInDown{
+    --animate-duration: 0.3s;
+}

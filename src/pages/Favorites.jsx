@@ -1,5 +1,5 @@
 import { HeartIcon } from "@heroicons/react/20/solid"
-import { ListOfCards } from "../components"
+import { ListOfRecipes } from "../components"
 import { MainLayout } from "../layouts/MainLayout"
 
 export const Favorites = () => {
@@ -42,7 +42,7 @@ export const Favorites = () => {
         <MainLayout>
             <div className=" animate__animated animate__fadeIn">
                 <h1 className="text-4xl font-narrow font-bold text-secondary text-left ml-6">Jesus' favorite Recipes</h1>
-                <ListOfCards recipes={recipes}/>
+                <ListOfRecipes recipes={recipes}/>
             </div>
         </MainLayout>
     )

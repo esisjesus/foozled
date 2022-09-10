@@ -1,5 +1,5 @@
 export * from './Navbar'
 export * from './Card'
-export * from './ListOfCards'
+export * from './ListOfRecipes'
 export * from './SearchBar'
 export * from './Pagination'

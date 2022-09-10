@@ -1,6 +1,3 @@
-import { useEffect } from "react"
-import { useState } from "react"
-import { search } from "../spoonacular_api/search"
 import { Card } from "./Card"
 import { Pagination } from "./Pagination"
 

@@ -4,7 +4,7 @@ import { LoginLayout } from "../layouts/LoginLayout"
 export const Register = () => {
     return (
         <LoginLayout>
-            <section className="bg-white p-3 h-fit w-fit rounded">
+            <section className="bg-white p-3 h-fit w-fit rounded animate__animated animate__fadeInUp">
 
             <h2 className="text-xl text-left text-primary font-bold font-narrow m-2">Register</h2>
 

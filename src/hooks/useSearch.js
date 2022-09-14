@@ -3,7 +3,7 @@ import { search } from "../spoonacular_api/search"
 
 export const useSearch = ({searchOffset, numberOfResults, searchQuery}) => {
     const [recipes, setRecipes] = useState([])
-    const [offSet, setOffSet] = useState(1)
+    const [offSet, setOffSet] = useState(searchOffset)
     
     useEffect(() => {
         search({offset:searchOffset, number:numberOfResults, query:searchQuery})

@@ -1,5 +1,6 @@
 import { ClockIcon, UserGroupIcon, HeartIcon, CurrencyDollarIcon, StarIcon, CheckCircleIcon, PlusCircleIcon } from "@heroicons/react/20/solid"
-import { MainLayout } from "../layouts/MainLayout"
+import { MainLayout } from "../layouts";
+
 
 export const Detail = () => {
     

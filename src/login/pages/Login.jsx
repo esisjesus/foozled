@@ -5,7 +5,7 @@ export const Login = () => {
     return (
         <LoginLayout>
 
-            <section className="bg-white p-3 h-fit w-fit rounded animate__animated animate__fadeInUp">
+            <section className="bg-white p-3 h-fit w-fit rounded animate__animated animate__fadeInLeft">
 
                 <h2 className="text-xl text-left text-primary font-bold font-narrow m-2">Login</h2>
 
@@ -17,11 +17,11 @@ export const Login = () => {
 
                 <div className="w-72">
                     <hr className="text-background"/>
-                    <span className="text-center">or</span>
+                    <p className="text-center">or</p>
                     <button className="bg-[#cc3c3c] text-white text-lg font-narrow w-full my-3 rounded p-1 shadow">
                         Sign in with Google
                     </button>
-                    <span className="text-right">Don't have an account? <Link to="/register" className="text-primary cursor-pointer hover:underline">Register</Link> </span>
+                    <p className="text-center">Don't have an account? <Link to="/register" className="text-primary cursor-pointer hover:underline">Register</Link> </p>
                 </div>
 
             </section>

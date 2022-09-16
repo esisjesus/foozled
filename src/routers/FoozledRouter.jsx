@@ -1,5 +1,6 @@
 import { Navigate, Route, Routes } from "react-router-dom"
-import { Detail, Favorites, Home, Login, Register, Search } from "../pages"
+import { Detail, Favorites, Home, Search } from "../recipes/pages"
+import { Login, Register } from "../login/pages"
 
 export const FoozledRouter = () => {
     return (

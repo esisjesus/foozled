@@ -1,5 +1,5 @@
-import { MainLayout } from '../layouts/MainLayout'
-import { MainSection } from '../sections'
+import { MainLayout } from '../layouts'
+import { MainSection } from '../sections/Home'
 import { SecondarySection } from '../sections/Home/SecondarySection'
 
 export const Home = () => {

@@ -6,8 +6,9 @@ export const useSearch = ({searchOffset, numberOfResults, searchQuery}) => {
     const [offSet, setOffSet] = useState(searchOffset)
     
     useEffect(() => {
-        search({offset:searchOffset, number:numberOfResults, query:searchQuery})
-        .then( res => {setRecipes(res.results)} )
+        search({offset:offSet, number:numberOfResults, query:searchQuery})
+        .then( res => setRecipes(res.results) )
+
     }, [offSet])
 
     const onNextPage = () => {

@@ -5,7 +5,7 @@ export const useAuth = (initialAuthState) => {
 
     const login = (obj) => {
         
-        setAuthState({ ...obj})
+        setAuthState({ ...obj, logged: true})
 
     }
 

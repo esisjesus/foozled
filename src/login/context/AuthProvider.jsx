@@ -2,6 +2,7 @@ import { useAuth } from '../hooks/useAuth'
 import { AuthContext } from './AuthContext'
 
 const initialAuthState = {
+    logged: false,
     email: null,
     displayName: null,
     photoURL: null,

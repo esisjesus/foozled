@@ -52,15 +52,15 @@ export const Register = () => {
                     <input required name="displayName" value={displayName} onChange={onInputChange} type="text" className="round w-full h-10 p-3 border-b-2 border-background focus-visible:border-secondary focus-visible:outline-none my-2" placeholder="Username"/>
                     <input required name="email" value={email} onChange={onInputChange} type="text" className="round w-full h-10 p-3 border-b-2 border-background focus-visible:border-secondary focus-visible:outline-none my-2" placeholder="email"/>
                     <input required name="password" value={password} onChange={onInputChange} type="password" className="round w-full h-10 p-3 border-b-2 border-background focus-visible:border-secondary focus-visible:outline-none my-2" placeholder="password"/>
+                    {
+                        authContext.state.error && 
+                        <p className="text-[#ff2c2c] text-sm">
+                            <ExclamationCircleIcon className="inline-block w-4"/> {authContext.state.error}
+                        </p>
+                    }
                     <button type="submit" className="bg-secondary text-white text-lg font-narrow w-full my-3 rounded p-1 shadow">Create account</button>
                 </form>
 
-                {
-                    authContext.state.error && 
-                    <p className="text-[#ff2c2c] text-sm">
-                        <ExclamationCircleIcon className="inline-block w-4"/> {authContext.state.error}
-                    </p>
-                }
                 
                 <div className="w-72">
                     <hr className="text-background"/>

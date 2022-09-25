@@ -2,6 +2,8 @@ import { Link } from "react-router-dom"
 import { useForm } from "../hooks"
 import { signInWithEmail, signInWithGoogle } from "../firebase/auth"
 import { LoginLayout } from "../layouts/LoginLayout"
+import { useContext } from "react"
+import { AuthContext } from "../context/AuthContext"
 
 const initialForm = {
     email: '',
@@ -11,10 +13,31 @@ const initialForm = {
 export const Login = () => {
 
     const {email, password, onInputChange} = useForm(initialForm)
-    
-    const onSubmitForm = (evt) => {
+    const authContext = useContext(AuthContext)
+
+    // This block is meant to be refactored and encapsulated to an isolated function at some point, as it could be reused several times -- Pending task
+    const onSubmitForm = async(evt) => {
         evt.preventDefault()
-        signInWithEmail(email, password)   
+
+        authContext.loading()
+
+        // Prevents a unnecessary post request to firebase
+        const validationError = validateAuth({email, password}) 
+        if(validationError) return authContext.error( validationError )
+
+        const response = await signInWithEmail(email, password)
+
+        const {photoURL, uid, displayName} = response.user? response.user : authContext.state
+        uid? authContext.login({email, displayName, photoURL, uid}): authContext.error(response)
+    }
+
+    const onGoogleSignIn = async() => {
+        
+        authContext.loading()
+
+        const response = await signInWithGoogle()
+        const {photoURL, uid, displayName} = response.user? response.user : authContext.state
+        uid? authContext.login({email, displayName, photoURL, uid}): authContext.error(response)
     }
 
     return (
@@ -34,7 +57,7 @@ export const Login = () => {
                 <div className="w-72">
                     <hr className="text-background"/>
                     <p className="text-center">or</p>
-                    <button onClick={signInWithGoogle} className="bg-[#cc3c3c] text-white text-lg font-narrow w-full my-3 rounded p-1 shadow">
+                    <button onClick={onGoogleSignIn} className="bg-[#cc3c3c] text-white text-lg font-narrow w-full my-3 rounded p-1 shadow">
                         Sign in with Google
                     </button>
                     <p className="text-center">Don't have an account? <Link to="/register" className="text-primary cursor-pointer hover:underline">Register</Link> </p>

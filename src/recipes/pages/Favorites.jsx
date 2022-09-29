@@ -1,8 +1,12 @@
 import { HeartIcon } from "@heroicons/react/20/solid"
+import { useContext } from "react"
+import { AuthContext } from "../../login/context/AuthContext"
 import { ListOfRecipes } from "../components"
 import { MainLayout } from "../layouts/MainLayout"
 
 export const Favorites = () => {
+
+    const {state} = useContext(AuthContext)
 
     const recipes = [
         {
@@ -35,13 +39,12 @@ export const Favorites = () => {
             "image": "https://spoonacular.com/recipeImages/644387-312x231.jpg",
             "imageType": "jpg"
         },
-        
     ]
     
     return (
         <MainLayout>
             <div className=" animate__animated animate__fadeIn">
-                <h1 className="text-4xl font-narrow font-bold text-secondary text-left ml-6">Jesus' favorite Recipes</h1>
+                <h1 className="text-4xl font-narrow font-bold text-secondary text-left ml-6">{state.displayName}'s favorite Recipes</h1>
                 <ListOfRecipes recipes={recipes}/>
             </div>
         </MainLayout>

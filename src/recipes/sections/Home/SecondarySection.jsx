@@ -4,8 +4,8 @@ import { useSearch } from "../../hooks/useSearch"
 export const SecondarySection = () => {
     
     const { recipes: allRecipes, offSet: allOffSet, onNextPage: allNext, onPrevPage: allPrev } = useSearch({
-        searchOffset: 1,
-        numberOfResults: 8
+        searchOffset: 0,
+        numberOfResults: 20
     })
 
 

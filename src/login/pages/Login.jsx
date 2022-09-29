@@ -69,7 +69,7 @@ export const Login = () => {
                     <button onClick={onGoogleSignIn} className="bg-[#cc3c3c] text-white text-lg font-narrow w-full my-3 rounded p-1 shadow">
                         Sign in with Google
                     </button>
-                    <p className="text-center">Don't have an account? <Link to="/register" className="text-primary cursor-pointer hover:underline">Register</Link> </p>
+                    <p className="text-center">Don't have an account? <Link to="/auth/register" className="text-primary cursor-pointer hover:underline">Register</Link> </p>
                 </div>
 
             </section>

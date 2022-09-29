@@ -1,4 +1,4 @@
-import { createUserWithEmailAndPassword, GoogleAuthProvider, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile} from "firebase/auth"
+import { createUserWithEmailAndPassword, GoogleAuthProvider, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile} from "firebase/auth"
 import { FbAuth } from "../../firebase/config"
 
 const googleProvider = new GoogleAuthProvider();
@@ -38,23 +38,6 @@ export const signInWithEmail = async(email, password) => {
     } catch (error) {
         console.error(error)
         return error.code
-    }
-}
-
-export const getCurrentUserData = () => {
-    let currentUser
-    onAuthStateChanged(FbAuth, (user)=> {
-        if(user){
-            currentUser = user
-        }else{
-            currentUser = null
-        }
-    })
-    if(currentUser){
-        const {email, displayName, photoURL, uid} = currentUser
-        return {email, displayName, photoURL, uid}
-    }else{
-        return null
     }
 }
 

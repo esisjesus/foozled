@@ -5,6 +5,5 @@ import { AuthContext } from "../login/context/AuthContext"
 export const PublicRoutes = ({children}) => {
 
     const {state} = useContext(AuthContext)
-
     return state.logged === false ?  children : <Navigate to= '/'/>
 }

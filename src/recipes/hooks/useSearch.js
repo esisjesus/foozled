@@ -6,9 +6,22 @@ export const useSearch = ({searchOffset, numberOfResults, searchQuery}) => {
     const [offSet, setOffSet] = useState(searchOffset)
     
     useEffect(() => {
+    const storedResults = localStorage.getItem("searchResults")
+    const lastSearchQuery = localStorage.getItem("searchQuery")
+    const lastOffset = localStorage.getItem("lastOffset")
+    if(storedResults && lastSearchQuery === (typeof searchQuery == 'undefined'? 'null': searchQuery ) && lastOffset === offSet.toString()){
+        setRecipes(JSON.parse(storedResults).results);
+    }else{
         search({offset:offSet, number:numberOfResults, query:searchQuery})
-        .then( res => setRecipes(res.results) )
-    }, [offSet])
+        .then( res => {
+            localStorage.setItem("searchResults", JSON.stringify(res) )
+            localStorage.setItem("searchQuery", typeof searchQuery == 'undefined'? null : searchQuery )
+            localStorage.setItem("lastOffset", offSet )
+            setRecipes(res.results);
+        });}
+        // search({offset:offSet, number:numberOfResults, query:searchQuery})
+        // .then( res => setRecipes(res.results) )
+    }, [offSet, searchQuery])
 
     const onNextPage = () => {
         setOffSet(prevOffset => prevOffset + numberOfResults )

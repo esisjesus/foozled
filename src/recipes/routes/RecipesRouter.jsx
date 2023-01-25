@@ -7,6 +7,7 @@ export const RecipesRouter = () => {
             <Route path="/" element={ <Home/> }/>
             <Route path="/favorites" element={ <Favorites/> }/>
             <Route path="/search" element={ <Search/> }/>
+            <Route path="/search/:query" element={ <Search/> }/>
             <Route path="/detail/:id" element={ <Detail/> } />            
             <Route path="/*" element= { <Navigate to='/' />}/>
         </Routes>

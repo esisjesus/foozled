@@ -7,6 +7,7 @@ import { useContext, useEffect } from "react"
 import { AuthContext } from "../login/context/AuthContext"
 import { onAuthStateChanged } from "firebase/auth"
 import { FbAuth } from "../firebase/config"
+import { FavoritesProvider } from "../recipes/context/FavoritesProvider"
 
 export const FoozledRouter = () => {
 
@@ -35,7 +36,9 @@ export const FoozledRouter = () => {
 
                 <Route path="/*" element= {
                     <PrivateRoutes>
-                        <RecipesRouter/>
+                        <FavoritesProvider>
+                            <RecipesRouter/>
+                        </FavoritesProvider>
                     </PrivateRoutes>
                 }/>
             </Routes>

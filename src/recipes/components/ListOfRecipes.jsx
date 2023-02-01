@@ -1,8 +1,20 @@
+import { useContext, useEffect, useState } from "react"
+import { FavoritesContext } from "../context/FavoritesContext"
 import { Card } from "./Card"
 import { Pagination } from "./Pagination"
 
-export const ListOfRecipes = ( { title, pagination = false, more= false, recipes= [], next, prev, offSet } ) => {
+export const ListOfRecipes = ( { title = "", pagination = false, more= false, recipes= [], next= null, prev= null, offSet= null } ) => {
 
+    const {favList, favRecipe, unFavRecipe} = useContext(FavoritesContext)
+    const [list, setList] = useState([])
+    
+    useEffect(() => {
+        const setListState = async () => {
+          const resolvedFavList = await favList
+          setList(resolvedFavList)
+        }
+        setListState()
+      }, [favList])
 
     return (
         <>
@@ -23,7 +35,7 @@ export const ListOfRecipes = ( { title, pagination = false, more= false, recipes
             {/* MAIN CONTENT */}
             <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 ">
                 {
-                    recipes.map( recipe => <Card key={recipe.id} {...recipe} /> )
+                    recipes.map( recipe => <Card key={recipe.title} {...recipe} favRecipe={favRecipe} unFavRecipe={unFavRecipe} list={list}/> )
                 }
             </div>
             {

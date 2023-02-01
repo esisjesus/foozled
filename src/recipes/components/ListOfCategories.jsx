@@ -23,7 +23,7 @@ export const ListOfCategories = () => {
         "Greek",
         "Spanish",
         "Middle Eastern",
-        "African",
+        "Snacks",
         "Peruvian",
         "Caribbean"
     ]

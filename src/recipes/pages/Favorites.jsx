@@ -1,51 +1,35 @@
 import { HeartIcon } from "@heroicons/react/20/solid"
-import { useContext } from "react"
+import { useContext, useEffect, useState } from "react"
 import { AuthContext } from "../../login/context/AuthContext"
 import { ListOfRecipes } from "../components"
+import { FavoritesContext } from "../context/FavoritesContext"
 import { MainLayout } from "../layouts/MainLayout"
 
 export const Favorites = () => {
 
     const {state} = useContext(AuthContext)
 
-    const recipes = [
-        {
-            "id": 715594,
-            "title": "Homemade Garlic and Basil French Fries",
-            "image": "https://spoonacular.com/recipeImages/715594-312x231.jpg",
-            "imageType": "jpg"
-        },
-        {
-            "id": 715497,
-            "title": "Berry Banana Breakfast Smoothie",
-            "image": "https://spoonacular.com/recipeImages/715497-312x231.jpg",
-            "imageType": "jpg"
-        },
-        {
-            "id": 644387,
-            "title": "Garlicky Kale",
-            "image": "https://spoonacular.com/recipeImages/644387-312x231.jpg",
-            "imageType": "jpg"
-        },
-        {
-            "id": 716268,
-            "title": "African Chicken Peanut Stew",
-            "image": "https://spoonacular.com/recipeImages/716268-312x231.jpg",
-            "imageType": "jpg"
-        },
-        {
-            "id": 644387,
-            "title": "Garlicky Kale",
-            "image": "https://spoonacular.com/recipeImages/644387-312x231.jpg",
-            "imageType": "jpg"
-        },
-    ]
+    const {favList} = useContext(FavoritesContext)
+    
+    const [haveFavs, setHaveFavs] = useState(null)
+
+    useEffect(() => {
+      setHaveFavs(favList && favList.length)
+    }, [favList])
+    
     
     return (
         <MainLayout>
             <div className=" animate__animated animate__fadeIn">
                 <h1 className="text-4xl font-narrow font-bold text-secondary text-left ml-6">{state.displayName}'s favorite Recipes</h1>
-                <ListOfRecipes recipes={recipes}/>
+                {haveFavs?
+                <ListOfRecipes recipes={favList}/>
+                : 
+                <div style={{height: 'calc(100vh - 200px)'}} className="flex flex-col justify-center items-center">
+                    <img className="w-144" src="https://res.cloudinary.com/djjjmocyf/image/upload/v1662933518/foozled/Chef-amico_su06pf.svg" alt="empty chef amico" />
+                    <h2 className="text-secondary font-semibold text-lg">You dont have favorites yet 💔</h2>
+                </div>
+            }
             </div>
         </MainLayout>
     )

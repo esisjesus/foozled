@@ -1,4 +1,4 @@
-# Foozled - Your Ultimate Recipe Finder
+# Foozled - Recipe Finder
 
 Welcome to Foozled, a web app that lets you search and save your favorite recipes with ease! With the help of the Spoonacular Recipes API, you can search for recipes using keywords and save the ones you like in your very own "Favorites" page.
 

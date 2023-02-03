@@ -1,0 +1,31 @@
+.cont{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    
+  }
+  .ig-loading-bar{
+    border: solid 2px #FC5566;
+    width: 280px;
+    height: 12px;
+    border-radius: 1.625rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+  .ig-loading-bar-inner{
+    width: 25px;
+    height: 8px;
+    border-radius: 1.625rem;
+    background-color: #FC5566;
+    margin: 0px 1.5px;
+    position: relative;
+    animation: loading .8s infinite alternate;
+    animation-timing-function: ease-in-out;
+  }
+  
+  @keyframes loading {
+    from {left: 0px;}
+    to {left: 248px;}
+  }

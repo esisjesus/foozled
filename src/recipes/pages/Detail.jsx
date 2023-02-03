@@ -1,5 +1,6 @@
 import { ClockIcon, UserGroupIcon, HeartIcon, CurrencyDollarIcon, StarIcon, CheckCircleIcon, PlusCircleIcon } from "@heroicons/react/20/solid"
 import { useParams } from "react-router-dom";
+import { LoadingBar } from "../components/LoadingBar/LoadingBar";
 import { useDetails } from "../hooks";
 import { MainLayout } from "../layouts";
 
@@ -21,7 +22,7 @@ export const Detail = () => {
         <MainLayout>
             {
                 loading?
-                <span>Loading</span>
+                <LoadingBar/>
                 :
                 <section className="flex flex-col justify-center items-center w-full md:grid md:grid-cols-2 animate__animated animate__fadeIn">
                     <div className="flex flex-column md:h-full md:w-full">
